@@ -1,0 +1,42 @@
+﻿@model Portfolio.Models.CV
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My CV</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #2c3e50; }
+        h2 { color: #3498db; }
+        ul { list-style-type: none; padding: 0; }
+    </style>
+</head>
+<body>
+    <h1>@Model.Name's CV</h1>
+    
+    <h2>Contact Information</h2>
+    <p>Email: @Model.Email</p>
+    <p>Phone: @Model.Phone</p>
+
+    <h2>Skills</h2>
+    <ul>
+        @foreach (var skill in Model.Skills)
+        {
+            <li>@skill</li>
+        }
+    </ul>
+
+    <h2>Education</h2>
+    @foreach (var edu in Model.EducationHistory)
+    {
+        <p><strong>@edu.Degree</strong> - @edu.Institution (@edu.Year)</p>
+    }
+
+    <h2>Work Experience</h2>
+    @foreach (var exp in Model.WorkExperience)
+    {
+        <p><strong>@exp.JobTitle</strong> - @exp.Company (@exp.Duration)</p>
+        <p>@exp.Description</p>
+    }
+</body>
+</html>
